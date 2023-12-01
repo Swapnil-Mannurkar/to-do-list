@@ -1,0 +1,21 @@
+.listItem {
+  @apply w-full pl-12 py-4 rounded-md flex items-center gap-8 cursor-pointer 
+  hover:scale-x-[1.02] shadow-[2px_2px_2px_2px_#00000060];
+}
+
+.listItem input::before {
+  content: "\2713";
+  line-height: 15px;
+  @apply block text-[14px] pl-[2.5px] font-[900] text-white;
+}
+
+.listItem input {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  @apply w-4 h-4 border-2 border-solid border-[#00000055];
+}
+
+.listItem input:checked {
+  @apply bg-yellow-400 border-0;
+}

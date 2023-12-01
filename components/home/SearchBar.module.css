@@ -3,7 +3,7 @@
 }
 
 .searchBarContainer h1 {
-  @apply font-bold text-4xl uppercase;
+  @apply font-bold text-4xl uppercase text-gray-700;
 }
 
 .searchBarContainer form {
@@ -11,7 +11,7 @@
 }
 
 .searchBarContainer input {
-  @apply border-black border-2 px-2 rounded-md w-80 bg-transparent;
+  @apply border-[#00000055] border-2 px-2 rounded-md w-80 bg-transparent focus:outline-none;
 }
 
 .searchBarContainer button {

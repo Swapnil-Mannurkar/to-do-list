@@ -1,0 +1,13 @@
+.toDoListContainer {
+  @apply w-full h-4/5 mt-1 overflow-y-auto flex flex-col items-center;
+}
+
+.toDoListContainer ul {
+  @apply w-[43%] mt-4 text-center flex flex-col gap-5;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.scrollable-list::-webkit-scrollbar {
+  display: none;
+}

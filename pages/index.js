@@ -1,6 +1,7 @@
 import React from "react";
 import styles from "./homePage.module.css";
 import SearchBar from "@/components/home/SearchBar";
+import ToDoList from "@/components/home/ToDoList";
 
 const HomePage = () => {
   return (
@@ -10,10 +11,10 @@ const HomePage = () => {
         style={{
           width: "75%",
           height: "2px",
-          color: "black",
-          background: "black",
+          background: "#00000055",
         }}
       />
+      <ToDoList />
     </div>
   );
 };
