@@ -1,5 +1,5 @@
 .searchBarContainer {
-  @apply w-1/2 h-28 flex flex-col justify-center items-center gap-4;
+  @apply w-1/2 h-32 flex flex-col justify-center items-center gap-4;
 }
 
 .searchBarContainer h1 {
@@ -7,13 +7,13 @@
 }
 
 .searchBarContainer form {
-  @apply flex gap-4;
+  @apply w-full flex gap-4 justify-center;
 }
 
 .searchBarContainer input {
-  @apply border-black border-2 py-1 px-4 rounded-md;
+  @apply border-black border-2 px-2 rounded-md w-80 bg-transparent;
 }
 
 .searchBarContainer button {
-  @apply bg-yellow-400 py-1 px-4 rounded-md;
+  @apply bg-yellow-400 py-1 px-4 rounded-md w-36 font-bold uppercase text-white hover:scale-105;
 }
