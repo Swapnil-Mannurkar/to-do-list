@@ -1,14 +1,15 @@
 import { connectDatabase, credentials } from "./db";
 
-export default handler = async (req, res) => {
+const handler = async (req, res) => {
   const method = req.method;
-  const username = req.body.username;
-  const password = req.body.password;
 
   if (method !== "POST") {
     res.status(422).json({ message: "Invalid request!", status: "failed" });
     return;
   }
+
+  const username = req.body.username;
+  const password = req.body.password;
 
   if (!username || !password || password.length < 7) {
     res.status(422).json({ message: "Invalid inputs!", status: "failed" });
@@ -54,3 +55,5 @@ export default handler = async (req, res) => {
     return;
   }
 };
+
+export default handler;
