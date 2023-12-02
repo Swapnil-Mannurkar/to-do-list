@@ -1,10 +1,10 @@
+import NextAuth from "next-auth/next";
 import Credentials from "next-auth/providers/credentials";
 import { connectDatabase, credentialsCollection } from "../../../lib/db";
-import NextAuth from "next-auth/next";
 import { verifyPassword } from "@/lib/auth";
 
 export const authOptions = {
-  secret: "Iwontsayit",
+  secret: "thequickbrownfox",
   providers: [
     Credentials({
       async authorize(credentials) {
@@ -30,7 +30,7 @@ export const authOptions = {
         }
 
         client.close();
-        return { username: user._id };
+        return { username: user };
       },
     }),
   ],
