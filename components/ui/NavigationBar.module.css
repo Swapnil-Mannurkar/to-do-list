@@ -1,0 +1,15 @@
+.navigationBar {
+  @apply w-full h-[10%] flex bg-yellow-400 font-bold justify-between items-center px-48;
+}
+
+.logo {
+  @apply text-[2.25rem] font-extrabold;
+}
+
+.navList {
+  @apply flex gap-8 items-center text-lg
+}
+
+.navList button {
+  @apply w-20 border-2 border-black uppercase text-sm py-1
+}

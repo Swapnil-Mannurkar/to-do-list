@@ -1,11 +1,10 @@
 import React from "react";
-import styles from "./homePage.module.css";
 import SearchBar from "@/components/home/SearchBar";
 import ToDoList from "@/components/home/ToDoList";
 
 const HomePage = () => {
   return (
-    <div className={styles.container}>
+    <>
       <SearchBar />
       <hr
         style={{
@@ -15,7 +14,7 @@ const HomePage = () => {
         }}
       />
       <ToDoList />
-    </div>
+    </>
   );
 };
 
