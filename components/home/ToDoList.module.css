@@ -1,5 +1,5 @@
 .toDoListContainer {
-  @apply w-full h-4/5 mt-1 overflow-y-auto flex flex-col items-center;
+  @apply w-full h-[75%] mt-1 overflow-y-auto flex flex-col items-center;
 }
 
 .toDoListContainer ul {

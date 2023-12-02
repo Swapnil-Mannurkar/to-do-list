@@ -1,13 +1,17 @@
 import React from "react";
 import styles from "./SearchBar.module.css";
+import { FaCirclePlus } from "react-icons/fa6";
 
 const SearchBar = () => {
   return (
     <div className={styles.searchBarContainer}>
-      <h1>Add your task!</h1>
+      <h1>Add your upcoming task!</h1>
       <form>
         <input type="text" required />
-        <button>Add task</button>
+        <button>
+          <FaCirclePlus />
+          Add task
+        </button>
       </form>
     </div>
   );
