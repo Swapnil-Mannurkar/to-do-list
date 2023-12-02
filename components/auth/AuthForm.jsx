@@ -1,8 +1,7 @@
 import React, { useRef, useState } from "react";
 import styles from "./AuthForm.module.css";
 import { useRouter } from "next/router";
-import { useDispatch } from "react-redux";
-import { authActions } from "@/store/authSlice";
+import { signIn } from "next-auth/react";
 
 const AuthForm = () => {
   const [isLogin, setIsLogin] = useState(true);
@@ -11,12 +10,16 @@ const AuthForm = () => {
   const usernameRef = useRef();
   const passwordRef = useRef();
   const router = useRouter();
-  const dispatch = useDispatch();
+
+  const onChangeHandler = () => {
+    setDisplayError(false);
+  };
 
   const toggleLoginSignupHandler = () => {
     setIsLogin((prev) => !prev);
     usernameRef.current.value = "";
     passwordRef.current.value = "";
+    setDisplayError(false);
   };
 
   const submitHandler = async (event) => {
@@ -26,9 +29,20 @@ const AuthForm = () => {
     const enteredPassword = passwordRef.current.value;
 
     if (isLogin) {
-      // login logic
+      const response = await signIn("credentials", {
+        redirect: false,
+        username: enteredUsername,
+        password: enteredPassword,
+      });
+
+      if (!response.error) {
+        router.replace("/");
+      } else {
+        setDisplayError(true);
+        setErrorMessage(response.error);
+      }
     } else {
-      const response = await fetch("/api/signup", {
+      const response = await fetch("/api/auth/signup", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -45,13 +59,9 @@ const AuthForm = () => {
         setDisplayError(true);
         setErrorMessage(data.message);
       } else {
-        dispatch(authActions.toggleLogin());
-        router.replace("/");
+        setIsLogin(true);
       }
     }
-
-    usernameRef.current.value = "";
-    passwordRef.current.value = "";
   };
 
   return (
@@ -63,6 +73,7 @@ const AuthForm = () => {
           type="text"
           required
           ref={usernameRef}
+          onChange={onChangeHandler}
           title="Please enter a username"
         />
       </div>
@@ -72,8 +83,9 @@ const AuthForm = () => {
           type="password"
           required
           ref={passwordRef}
-          pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+          onChange={onChangeHandler}
           title="Must contain at least one  number and one uppercase and lowercase letter, and at least 8 or more characters"
+          pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
         />
       </div>
       <button className={styles.actionButton}>

@@ -2,7 +2,7 @@ import React from "react";
 import ToDoListItem from "./ToDoListItem";
 import styles from "./ToDoList.module.css";
 
-const DUMMY_DATA = ["task1", "task2", "task3", "task1", "task2", "task3","task1", "task2", "task3", "task4"];
+const DUMMY_DATA = ["task1", "task2", "task3", "task4"];
 
 const ToDoList = () => {
   return (

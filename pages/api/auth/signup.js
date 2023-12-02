@@ -1,4 +1,5 @@
-import { connectDatabase, credentials } from "./db";
+import { encryptPassword } from "@/lib/auth";
+import { connectDatabase, credentialsCollection } from "../../../lib/db";
 
 const handler = async (req, res) => {
   const method = req.method;
@@ -21,7 +22,7 @@ const handler = async (req, res) => {
   try {
     client = await connectDatabase();
 
-    const collection = await credentials(client);
+    const collection = await credentialsCollection(client);
 
     const existingUser = await collection.findOne({ _id: username });
 
@@ -36,7 +37,9 @@ const handler = async (req, res) => {
       return;
     }
 
-    await collection.insertOne({ _id: username, password });
+    const encryptedPassword = await encryptPassword(password);
+
+    await collection.insertOne({ _id: username, password: encryptedPassword });
 
     client.close();
     res.status(201).json({ message: "User created!", status: "success" });
