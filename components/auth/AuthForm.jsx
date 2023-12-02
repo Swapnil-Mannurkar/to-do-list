@@ -1,6 +1,8 @@
 import React, { useRef, useState } from "react";
 import styles from "./AuthForm.module.css";
 import { useRouter } from "next/router";
+import { useDispatch } from "react-redux";
+import { authActions } from "@/store/authSlice";
 
 const AuthForm = () => {
   const [isLogin, setIsLogin] = useState(true);
@@ -9,6 +11,7 @@ const AuthForm = () => {
   const usernameRef = useRef();
   const passwordRef = useRef();
   const router = useRouter();
+  const dispatch = useDispatch();
 
   const toggleLoginSignupHandler = () => {
     setIsLogin((prev) => !prev);
@@ -42,6 +45,7 @@ const AuthForm = () => {
         setDisplayError(true);
         setErrorMessage(data.message);
       } else {
+        dispatch(authActions.toggleLogin());
         router.replace("/");
       }
     }
