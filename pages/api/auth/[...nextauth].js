@@ -4,6 +4,7 @@ import NextAuth from "next-auth/next";
 import { verifyPassword } from "@/lib/auth";
 
 export const authOptions = {
+  secret: "Iwontsayit",
   providers: [
     Credentials({
       async authorize(credentials) {
