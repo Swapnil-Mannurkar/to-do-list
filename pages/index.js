@@ -6,13 +6,7 @@ const HomePage = () => {
   return (
     <>
       <SearchBar />
-      <hr
-        style={{
-          width: "75%",
-          height: "2px",
-          background: "#00000055",
-        }}
-      />
+      <hr className="w-3/4 h-[2px] bg-[#00000055]" />
       <ToDoList />
     </>
   );
