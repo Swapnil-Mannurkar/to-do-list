@@ -1,6 +1,6 @@
 .authForm {
-  @apply w-[30%] h-[50%] m-auto flex flex-col justify-center items-center 
-  rounded-md shadow-[2px_2px_2px_2px_#00000055] gap-6;
+  @apply w-[30%] h-[60%] m-auto flex flex-col justify-center items-center 
+  rounded-md shadow-[2px_2px_2px_2px_#00000055] gap-6 relative;
 }
 
 .authForm h1 {
@@ -20,9 +20,16 @@
 }
 
 .loginSignupToggle {
-  @apply cursor-pointer text-center;
+  @apply cursor-pointer text-center pt-6;
 }
 
 .textBlue {
-  @apply text-blue-900;
+  color: blue;
+}
+
+.errorMessage {
+  color: red;
+  text-align: center;
+  position: absolute;
+  top: 71%;
 }

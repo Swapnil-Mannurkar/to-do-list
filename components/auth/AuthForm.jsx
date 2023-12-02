@@ -1,10 +1,14 @@
 import React, { useRef, useState } from "react";
 import styles from "./AuthForm.module.css";
+import { useRouter } from "next/router";
 
 const AuthForm = () => {
   const [isLogin, setIsLogin] = useState(true);
+  const [displayError, setDisplayError] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
   const usernameRef = useRef();
   const passwordRef = useRef();
+  const router = useRouter();
 
   const toggleLoginSignupHandler = () => {
     setIsLogin((prev) => !prev);
@@ -34,7 +38,12 @@ const AuthForm = () => {
 
       const data = await response.json();
 
-      console.log(data);
+      if (data.status === "failed") {
+        setDisplayError(true);
+        setErrorMessage(data.message);
+      } else {
+        router.replace("/");
+      }
     }
 
     usernameRef.current.value = "";
@@ -66,6 +75,7 @@ const AuthForm = () => {
       <button className={styles.actionButton}>
         {isLogin ? "LOGIN" : "SIGN UP"}
       </button>
+      {displayError && <p className={styles.errorMessage}>{errorMessage}</p>}
       <p
         onClick={toggleLoginSignupHandler}
         className={styles.loginSignupToggle}
