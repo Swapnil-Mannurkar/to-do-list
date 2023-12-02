@@ -1,0 +1,28 @@
+.authForm {
+  @apply w-[30%] h-[50%] m-auto flex flex-col justify-center items-center 
+  rounded-md shadow-[2px_2px_2px_2px_#00000055] gap-6;
+}
+
+.authForm h1 {
+  @apply text-2xl font-bold;
+}
+
+.inputField {
+  @apply w-[70%] flex flex-col;
+}
+
+.authForm input {
+  @apply w-full bg-transparent border-[#00000055] border-2 px-2 rounded-md focus:outline-none;
+}
+
+.actionButton {
+  @apply w-[70%] bg-yellow-400 font-bold rounded-md py-1.5 shadow-[2px_2px_5px_1px_#00000055];
+}
+
+.loginSignupToggle {
+  @apply cursor-pointer text-center;
+}
+
+.textBlue {
+  @apply text-blue-900;
+}
