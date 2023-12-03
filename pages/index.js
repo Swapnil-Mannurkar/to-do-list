@@ -1,13 +1,13 @@
 import React from "react";
-import SearchBar from "@/components/home/AddTask";
+import AddTask from "@/components/home/AddTask";
 import ToDoList from "@/components/home/ToDoList";
 import { getServerSession } from "next-auth";
 import { authOptions } from "./api/auth/[...nextauth]";
 
-const HomePage = () => {
+const HomePage = (props) => {
   return (
     <>
-      <SearchBar />
+      <AddTask username={props.username} />
       <hr className="w-3/4 h-[2px] bg-[#00000055]" />
       <ToDoList />
     </>
