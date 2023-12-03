@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import ToDoListItem from "./ToDoListItem";
 import styles from "./ToDoList.module.css";
 
-const ToDoList = () => {
+const ToDoList = (props) => {
   const [tasks, setTasks] = useState([]);
   const [isError, setIsError] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
@@ -41,7 +41,7 @@ const ToDoList = () => {
       {!isLoading && !isError && (
         <ul>
           {tasks.map((task, index) => (
-            <ToDoListItem task={task} key={index} />
+            <ToDoListItem task={task} key={index} username={props.username} />
           ))}
         </ul>
       )}

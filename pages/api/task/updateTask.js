@@ -3,11 +3,12 @@ import { MongoClient } from "mongodb";
 const handler = async (req, res) => {
   const method = req.method;
 
-  if (method !== "POST") {
-    res.status(422).json({ message: "Something went wrong!" });
+  if (method !== "PATCH") {
+    res.status(422).json({ message: "Invalid request!" });
   }
 
-  const task = req.body.task;
+  const taskName = req.body.task;
+  const taskStatus = req.body.status;
   const username = req.body.username;
 
   let client;
@@ -24,15 +25,19 @@ const handler = async (req, res) => {
 
   try {
     const collection = client.db("list-of-events").collection(username);
-    await collection.insertOne({ task: task, status: false });
+
+    await collection.updateOne(
+      { task: taskName },
+      { $set: { status: taskStatus } }
+    );
 
     client.close();
     res
       .status(201)
-      .json({ message: "Successfully add a new task!", status: "success" });
+      .json({ message: "Successfully updated the task", status: "success" });
   } catch (error) {
     client.close();
-    res.status(422).json({ message: "Failed to add task!", status: "failed" });
+    res.status(422).json({ message: "Failed to update!", status: "failed" });
     return;
   }
 };
