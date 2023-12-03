@@ -20,7 +20,7 @@ const ToDoListItem = (props) => {
         onClick={checkboxHandler}
         checked={isDone ? true : false}
       ></input>
-      <span style={textStyle}>{props.task}</span>
+      <span style={textStyle}>{props.task.task}</span>
     </li>
   );
 };
