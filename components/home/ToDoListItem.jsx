@@ -2,7 +2,8 @@ import React, { useState } from "react";
 import styles from "./ToDoListItem.module.css";
 
 const ToDoListItem = (props) => {
-  const [isDone, setIsDone] = useState(false);
+  const { task } = props;
+  const [isDone, setIsDone] = useState(task.status);
 
   const checkboxHandler = () => {
     setIsDone((prev) => !prev);
@@ -20,7 +21,7 @@ const ToDoListItem = (props) => {
         onClick={checkboxHandler}
         checked={isDone ? true : false}
       ></input>
-      <span style={textStyle}>{props.task.task}</span>
+      <span style={textStyle}>{task.task}</span>
     </li>
   );
 };

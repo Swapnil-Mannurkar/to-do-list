@@ -2,30 +2,49 @@ import React, { useEffect, useState } from "react";
 import ToDoListItem from "./ToDoListItem";
 import styles from "./ToDoList.module.css";
 
-const DUMMY_DATA = ["task1", "task2", "task3", "task4"];
-
 const ToDoList = () => {
   const [tasks, setTasks] = useState([]);
+  const [isError, setIsError] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
 
   const fetchData = async () => {
     const response = await fetch(`/api/task/fetchTask`);
 
     const data = await response.json();
 
-    setTasks(data);
+    if (data.status === "failed") {
+      setTasks(data);
+      setIsError(true);
+      setIsLoading(false);
+      return;
+    }
+
+    setTasks(data.result);
+    setIsLoading(false);
   };
 
   useEffect(() => {
     fetchData();
   }, []);
 
+  if (isError) {
+    return (
+      <div className={styles.toDoListContainer}>
+        <h1 className={styles.errorText}>{tasks.message}</h1>
+      </div>
+    );
+  }
+
   return (
     <div className={styles.toDoListContainer}>
-      <ul>
-        {tasks.map((task, index) => (
-          <ToDoListItem task={task} key={index} />
-        ))}
-      </ul>
+      {isLoading && <h1 className={styles.loadingText}>Loading...</h1>}
+      {!isLoading && !isError && (
+        <ul>
+          {tasks.map((task, index) => (
+            <ToDoListItem task={task} key={index} />
+          ))}
+        </ul>
+      )}
     </div>
   );
 };

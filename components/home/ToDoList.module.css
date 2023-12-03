@@ -11,3 +11,11 @@
 .scrollable-list::-webkit-scrollbar {
   display: none;
 }
+
+.loadingText {
+  @apply h-48 text-3xl font-bold m-auto;
+}
+
+.errorText {
+  @apply text-[red] h-48 text-3xl font-bold m-auto;
+}
