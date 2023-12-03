@@ -1,5 +1,5 @@
 import React from "react";
-import SearchBar from "@/components/home/SearchBar";
+import SearchBar from "@/components/home/AddTask";
 import ToDoList from "@/components/home/ToDoList";
 import { getServerSession } from "next-auth";
 import { authOptions } from "./api/auth/[...nextauth]";

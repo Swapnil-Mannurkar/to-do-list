@@ -3,7 +3,7 @@ import styles from "./ToDoListItem.module.css";
 
 const ToDoListItem = (props) => {
   const { task } = props;
-  const [isDone, setIsDone] = useState(task.status);
+  const [isDone, setIsDone] = useState(task.status === "true");
 
   const checkboxHandler = () => {
     setIsDone((prev) => !prev);

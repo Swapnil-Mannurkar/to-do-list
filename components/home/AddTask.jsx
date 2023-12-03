@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "./SearchBar.module.css";
+import styles from "./AddTask.module.css";
 import { FaCirclePlus } from "react-icons/fa6";
 
 const SearchBar = () => {
