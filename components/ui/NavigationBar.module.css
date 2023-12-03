@@ -7,9 +7,10 @@
 }
 
 .navList {
-  @apply flex gap-8 items-center text-lg
+  @apply flex gap-8 items-center text-xl;
 }
 
 .navList button {
-  @apply w-20 border-2 border-black uppercase text-sm py-1
+  @apply w-24 border-2 border-black uppercase text-sm py-1 rounded-[0.3rem]
+  hover:border-white hover:text-white;
 }
