@@ -4,12 +4,12 @@ import ToDoList from "@/components/home/ToDoList";
 import { getServerSession } from "next-auth";
 import { authOptions } from "./api/auth/[...nextauth]";
 
-const HomePage = ({ data }) => {
+const HomePage = () => {
   return (
     <>
       <SearchBar />
       <hr className="w-3/4 h-[2px] bg-[#00000055]" />
-      <ToDoList data={data} />
+      <ToDoList />
     </>
   );
 };
