@@ -8,15 +8,19 @@
 }
 
 .inputField {
-  @apply w-[70%] flex flex-col;
+  @apply w-[75%] flex flex-col relative;
+}
+
+.eyeIcon {
+  @apply absolute bottom-2.5 right-4;
 }
 
 .authForm input {
-  @apply w-full bg-transparent border-[#00000055] border-2 px-2 rounded-md focus:outline-none;
+  @apply w-full bg-transparent border-[#00000055] border-2 px-2 py-1 rounded-md focus:outline-none;
 }
 
 .actionButton {
-  @apply w-[70%] bg-yellow-400 font-bold rounded-md py-1.5 shadow-[2px_2px_5px_1px_#00000055];
+  @apply w-[75%] bg-yellow-400 font-bold rounded-md py-1.5 shadow-[2px_2px_5px_1px_#00000055];
 }
 
 .loginSignupToggle {
