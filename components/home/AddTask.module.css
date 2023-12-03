@@ -15,5 +15,20 @@
 }
 
 .searchBarContainer button {
-  @apply bg-yellow-400 flex items-center justify-center gap-2 py-1.5 rounded-md w-36 font-bold uppercase text-white hover:scale-105;
+  @apply bg-yellow-400 flex items-center justify-center gap-2 py-1.5 rounded-md 
+  w-36 font-bold uppercase text-white hover:scale-105;
+}
+
+@media screen and (max-width: 500px) {
+  .searchBarContainer {
+    @apply w-[90%] h-[20%] gap-2;
+  }
+
+  .searchBarContainer h1 {
+    @apply text-2xl;
+  }
+
+  .searchBarContainer button {
+    @apply text-sm;
+  }
 }

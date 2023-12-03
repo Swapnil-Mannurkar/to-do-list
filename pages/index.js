@@ -8,7 +8,7 @@ const HomePage = (props) => {
   return (
     <>
       <AddTask username={props.username} />
-      <hr className="w-3/4 h-[2px] bg-[#00000055]" />
+      <hr className="homeHr" />
       <ToDoList username={props.username} />
     </>
   );

@@ -37,3 +37,9 @@
   position: absolute;
   top: 71%;
 }
+
+@media screen and (max-width: 500px) {
+  .authForm {
+    @apply w-[80%] h-[65%];
+  }
+}

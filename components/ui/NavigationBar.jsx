@@ -25,7 +25,7 @@ const NavigationBar = () => {
         <h1 className={styles.logo}>TO-DO-LIST</h1>
       </Link>
       <ul className={styles.navList}>
-        {session && <Link href={"/profile"}>Profile</Link>}
+        {/* {session && <Link href={"/profile"}>Profile</Link>} */}
         <button onClick={loginLogoutClickHandler}>
           {session ? "Logout" : "Login"}
         </button>

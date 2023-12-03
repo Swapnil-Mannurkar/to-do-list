@@ -19,3 +19,9 @@
 .errorText {
   @apply text-[red] h-48 text-3xl font-bold m-auto;
 }
+
+@media screen and (max-width: 500px) {
+  .toDoListContainer ul {
+    @apply w-[85%];
+  }
+}

@@ -53,7 +53,7 @@ const ToDoListItem = (props) => {
 
   return (
     <>
-      {isLoading && <Modal message={"Updating the task..."} />}
+      {isLoading && <Modal message={"Updating task..."} />}
       <li className={styles.listItem}>
         <div className={styles.taskContainer} onClick={checkboxHandler}>
           <input
