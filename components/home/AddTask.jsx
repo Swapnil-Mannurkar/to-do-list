@@ -15,7 +15,7 @@ const AddTask = ({ username }) => {
 
     const task = taskRef.current.value;
 
-    const response = await fetch("/api/task/addTask", {
+    await fetch("/api/task/addTask", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ task, username }),
@@ -28,7 +28,7 @@ const AddTask = ({ username }) => {
 
   return (
     <div className={styles.searchBarContainer}>
-      {isLoading && <Modal />}
+      {isLoading && <Modal message={"Adding new task..."} />}
       <h1>Add your upcoming task!</h1>
       <form onSubmit={addTaskHandler}>
         <input type="text" ref={taskRef} required />
