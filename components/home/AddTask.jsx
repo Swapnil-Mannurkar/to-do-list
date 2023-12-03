@@ -1,15 +1,19 @@
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import styles from "./AddTask.module.css";
 import { FaCirclePlus } from "react-icons/fa6";
+import Modal from "../ui/Modal";
+import { useRouter } from "next/router";
 
 const AddTask = ({ username }) => {
   const taskRef = useRef();
+  const [isLoading, setIsLoading] = useState(false);
+  const router = useRouter();
 
   const addTaskHandler = async (event) => {
     event.preventDefault();
+    setIsLoading(true);
 
     const task = taskRef.current.value;
-    console.log(task);
 
     const response = await fetch("/api/task/addTask", {
       method: "POST",
@@ -17,15 +21,18 @@ const AddTask = ({ username }) => {
       body: JSON.stringify({ task, username }),
     });
 
-    taskRef.current.value = "";
+    taskRef.current.value = " ";
+    setIsLoading(false);
+    router.reload();
   };
 
   return (
     <div className={styles.searchBarContainer}>
+      {isLoading && <Modal />}
       <h1>Add your upcoming task!</h1>
-      <form>
+      <form onSubmit={addTaskHandler}>
         <input type="text" ref={taskRef} required />
-        <button onClick={addTaskHandler}>
+        <button>
           <FaCirclePlus />
           Add task
         </button>
