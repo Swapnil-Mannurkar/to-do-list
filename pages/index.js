@@ -4,6 +4,7 @@ import ToDoList from "@/components/home/ToDoList";
 import { getServerSession } from "next-auth";
 import { authOptions } from "./api/auth/[...nextauth]";
 import { connectDatabase, taskCollection } from "@/lib/db";
+import Head from "next/head";
 
 const HomePage = (props) => {
   const allTasks = props.allTasks;
@@ -12,6 +13,10 @@ const HomePage = (props) => {
 
   return (
     <>
+      <Head>
+        <title>To-Do-List</title>
+        <meta name="description" content="list of tasks of the user!" />
+      </Head>
       <AddTask username={username} />
       <hr className="homeHr" />
       <ToDoList allTasks={allTasks} username={username} isError={isError} />
