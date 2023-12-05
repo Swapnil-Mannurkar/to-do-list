@@ -15,7 +15,7 @@ const AddTask = ({ username }) => {
 
     const task = taskRef.current.value;
 
-    await fetch("/api/task/addTask", {
+    await fetch("/api/task/updateTask", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ task, username }),

@@ -1,4 +1,4 @@
-import { MongoClient } from "mongodb";
+import { connectDatabase, taskCollection } from "@/lib/db";
 
 const handler = async (req, res) => {
   const method = req.method;
@@ -12,9 +12,7 @@ const handler = async (req, res) => {
 
   let client;
   try {
-    client = await MongoClient.connect(
-      "mongodb+srv://swapnil:mannurkar@to-do-list.vx4lldn.mongodb.net/?retryWrites=true&w=majority"
-    );
+    client = await connectDatabase();
   } catch (error) {
     res
       .status(422)
@@ -23,7 +21,7 @@ const handler = async (req, res) => {
   }
 
   try {
-    const collection = client.db("list-of-events").collection(username);
+    const collection = await taskCollection(client, username);
     await collection.insertOne({ task: task, status: false });
 
     client.close();
