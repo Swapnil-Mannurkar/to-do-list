@@ -3,13 +3,17 @@ import AddTask from "@/components/home/AddTask";
 import ToDoList from "@/components/home/ToDoList";
 import { getServerSession } from "next-auth";
 import { authOptions } from "./api/auth/[...nextauth]";
+import { connectDatabase, taskCollection } from "@/lib/db";
 
 const HomePage = (props) => {
+  const allTasks = props.allTasks;
+  const username = props.username;
+
   return (
     <>
-      <AddTask username={props.username} />
+      <AddTask username={username} />
       <hr className="homeHr" />
-      <ToDoList username={props.username} />
+      <ToDoList allTasks={allTasks} username={username} />
     </>
   );
 };
@@ -24,11 +28,17 @@ export const getServerSideProps = async (context) => {
         permanent: false,
       },
     };
-  }
+  } else {
+    const client = await connectDatabase();
+    const collection = await taskCollection(client, session.user.name);
+    let allTasks = await collection.find({}).toArray();
 
-  return {
-    props: { username: session.user.name },
-  };
+    allTasks = allTasks.map(({ _id, ...data }) => data);
+
+    return {
+      props: { allTasks, username: session.user.name },
+    };
+  }
 };
 
 export default HomePage;

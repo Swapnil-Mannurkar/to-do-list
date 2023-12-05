@@ -18,7 +18,7 @@ const ToDoListItem = (props) => {
     const response = await fetch("/api/task/updateTask", {
       method: "PATCH",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ task, status, username }),
+      body: JSON.stringify({ task, status, username: props.username }),
     });
 
     if (!response.ok) {

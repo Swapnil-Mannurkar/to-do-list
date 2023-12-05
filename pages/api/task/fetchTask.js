@@ -1,8 +1,4 @@
-import {
-  connectDatabase,
-  credentialsCollection,
-  taskCollection,
-} from "@/lib/db";
+import { connectDatabase, taskCollection } from "@/lib/db";
 import { getServerSession } from "next-auth";
 import { authOptions } from "../auth/[...nextauth]";
 
