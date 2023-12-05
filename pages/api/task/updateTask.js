@@ -21,7 +21,7 @@ const handler = async (req, res) => {
       const collection = await taskCollection(client, username);
 
       if (method === "POST") {
-        await collection.insertOne({ task: task, status: false });
+        await collection.insertOne({ task: taskName, status: false });
       }
 
       if (method === "PATCH") {
