@@ -29,6 +29,6 @@
   }
 
   .navList button {
-    @apply w-20 text-xs ;
+    @apply w-20 text-xs;
   }
 }

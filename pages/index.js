@@ -8,12 +8,13 @@ import { connectDatabase, taskCollection } from "@/lib/db";
 const HomePage = (props) => {
   const allTasks = props.allTasks;
   const username = props.username;
+  const isError = props.isError;
 
   return (
     <>
       <AddTask username={username} />
       <hr className="homeHr" />
-      <ToDoList allTasks={allTasks} username={username} />
+      <ToDoList allTasks={allTasks} username={username} isError={isError} />
     </>
   );
 };
@@ -28,15 +29,25 @@ export const getServerSideProps = async (context) => {
         permanent: false,
       },
     };
-  } else {
+  }
+
+  try {
     const client = await connectDatabase();
     const collection = await taskCollection(client, session.user.name);
     let allTasks = await collection.find({}).toArray();
-
+    if (allTasks.length === 0) {
+      return {
+        props: { allTasks: {}, username: session.user.name, isError: true },
+      };
+    }
     allTasks = allTasks.map(({ _id, ...data }) => data);
 
     return {
-      props: { allTasks, username: session.user.name },
+      props: { allTasks, username: session.user.name, isError: false },
+    };
+  } catch (error) {
+    return {
+      props: { allTasks: {}, username: session.user.name, isError: true },
     };
   }
 };

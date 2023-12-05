@@ -4,12 +4,12 @@ import styles from "./ToDoList.module.css";
 
 const ToDoList = (props) => {
   const allTasks = props.allTasks;
-  const isError = false;
+  const isError = props.isError;
 
   if (isError) {
     return (
       <div className={styles.toDoListContainer}>
-        <h1 className={styles.errorText}>{tasks.message}</h1>
+        <h1 className={styles.errorText}>No Data found!</h1>
       </div>
     );
   }
