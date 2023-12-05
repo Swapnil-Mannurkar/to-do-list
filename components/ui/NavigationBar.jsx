@@ -34,7 +34,6 @@ const NavigationBar = () => {
       </Link>
       <div className={styles.navList}>
         {session && <div>Hello {username}!</div>}
-        {session && <Link href={"/profile"}>Profile</Link>}
         <button onClick={loginLogoutClickHandler}>
           {session ? "Logout" : "Login"}
         </button>
