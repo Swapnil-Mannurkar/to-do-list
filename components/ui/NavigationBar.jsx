@@ -13,8 +13,7 @@ const NavigationBar = () => {
     event.preventDefault();
 
     if (session) {
-      signOut({ redirect: false });
-      router.push("/auth");
+      signOut({ redirect: true });
     } else {
       router.replace("/auth");
     }
