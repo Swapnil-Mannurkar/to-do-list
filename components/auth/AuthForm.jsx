@@ -40,8 +40,8 @@ const AuthForm = () => {
     if (isLogin) {
       const response = await signIn("credentials", {
         redirect: false,
-        username: enteredUsername,
-        password: enteredPassword,
+        username: enteredUsername.trim(),
+        password: enteredPassword.trim(),
       });
 
       if (!response.error) {
@@ -57,8 +57,8 @@ const AuthForm = () => {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          username: enteredUsername,
-          password: enteredPassword,
+          username: enteredUsername.trim(),
+          password: enteredPassword.trim(),
         }),
       });
 

@@ -42,4 +42,8 @@
   .authForm {
     @apply w-[80%] h-[65%];
   }
+
+  .errorMessage {
+    top: 68%;
+  }
 }
